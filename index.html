@@ -1,1 +1,436 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09051a">
+<meta name="description" content="INK BOTTLE — Five Bottles, A World of Mystery. Discover a mysterious NFT collection on INK Chain.">
+<title>INK BOTTLE — Five Bottles, A World of Mystery</title>
+
+<style>
+:root {
+  --bg: #09051a;
+  --panel: #120a27;
+  --purple: #a65cff;
+  --light: #e5c7ff;
+  --text: #f5edff;
+  --muted: #b9a9d0;
+  --border: rgba(186, 105, 255, .35);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img { display: block; max-width: 100%; }
+.container { width: min(1120px, 92%); margin: auto; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(9, 5, 26, .94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.nav {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 21px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.brand img { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 25px; font-size: 14px; }
+.nav-links a:hover, footer a:hover { color: var(--light); }
+.menu-button {
+  display: none;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 7px;
+  font-size: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  color: white;
+  background: linear-gradient(120deg, #5e20a8, #9a42e8);
+  border: 1px solid #d3a3ff;
+  border-radius: 7px;
+  box-shadow: 0 0 18px rgba(158, 65, 255, .25);
+  font-size: 14px;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 0 25px #8039c966; }
+
+.hero {
+  min-height: 590px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 36px;
+  padding-top: 55px;
+  padding-bottom: 55px;
+  background:
+    radial-gradient(ellipse at 70% 50%, #42126c55, transparent 55%),
+    linear-gradient(180deg, #100821, var(--bg));
+}
+.eyebrow {
+  color: var(--light);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 10px 0;
+  font-size: clamp(44px, 7vw, 78px);
+  line-height: 1.05;
+  letter-spacing: 2px;
+  color: var(--light);
+  text-shadow: 0 0 28px #9b4aff55;
+}
+.tagline { font-size: clamp(19px, 3vw, 27px); margin: 16px 0; }
+.hero-copy { color: var(--muted); max-width: 470px; margin-bottom: 26px; }
+.hero-art { position: relative; text-align: center; }
+.hero-art::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #7818c526;
+  filter: blur(45px);
+  top: 15%;
+  left: 15%;
+}
+.hero-art img {
+  position: relative;
+  width: min(100%, 470px);
+  margin: auto;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 45px #8e31ff25;
+}
+
+section { padding: 78px 0; scroll-margin-top: 85px; }
+.section-heading { text-align: center; margin-bottom: 38px; }
+.section-heading h2, .about h2 {
+  margin: 0;
+  color: var(--light);
+  font-size: clamp(27px, 4vw, 38px);
+  line-height: 1.25;
+}
+.section-heading p { color: var(--muted); margin: 10px 0 0; }
+.collection { background: linear-gradient(180deg, #100821, #0b0719); }
+.cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.card {
+  min-width: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1a1030, #0d081b);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform .25s, border-color .25s;
+}
+.card:hover { transform: translateY(-5px); border-color: var(--purple); }
+.card img { width: 100%; aspect-ratio: 1 / 1.12; object-fit: cover; }
+.card-info { padding: 15px 8px 18px; text-align: center; }
+.card-info h3 { margin: 0 0 6px; font-size: 15px; }
+.card-info p { margin: 0; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; }
+.status {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--light);
+  font: 10px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+.status.revealed { color: #a9f2c1; border-color: #4caa78; }
+
+.about {
+  background:
+    radial-gradient(ellipse at 15% 50%, #40156a40, transparent 55%),
+    var(--bg);
+}
+.about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+.story-art img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 35px #7f31ce20;
+}
+.about h3 { color: var(--light); font-style: italic; font-size: 20px; font-weight: normal; }
+.about p { color: var(--muted); font-size: 15px; }
+
+.roadmap { background: linear-gradient(180deg, #100821, #09051a); }
+.roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.phase {
+  padding: 22px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: linear-gradient(160deg, #1b1032, #0d081c);
+}
+.phase .quarter { color: var(--purple); font-size: 12px; letter-spacing: 2px; }
+.phase h3 { color: var(--light); font-size: 19px; line-height: 1.35; }
+.phase ul { padding-left: 18px; color: var(--muted); font-size: 13px; }
+.phase li { margin: 9px 0; }
+.disclaimer { color: #9c8db2; font-size: 12px; text-align: center; margin-top: 25px; }
+
+footer { border-top: 1px solid var(--border); background: #070412; padding: 30px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-brand img { width: 42px; height: 42px; object-fit: cover; border-radius: 50%; }
+.footer-brand strong { display: block; color: var(--light); letter-spacing: 1px; }
+.footer-brand span, .copyright { color: var(--muted); font-size: 12px; }
+.footer-links { display: flex; gap: 22px; font-size: 13px; }
+.copyright { text-align: right; }
+
+@media (max-width: 850px) {
+  .nav-links { gap: 14px; }
+  .nav-links .enter { display: none; }
+  .hero { min-height: 0; gap: 22px; }
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .roadmap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-grid { gap: 25px; }
+}
+@media (max-width: 600px) {
+  .nav { min-height: 62px; flex-wrap: wrap; padding: 10px 0; }
+  .brand { font-size: 16px; letter-spacing: 1px; }
+  .brand img { width: 30px; height: 30px; }
+  .menu-button { display: block; }
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 4px; border-top: 1px solid #ffffff0d; }
+  .nav-links .enter { display: block; text-align: center; margin-top: 8px; }
+  .hero { grid-template-columns: 1fr; padding-top: 48px; text-align: center; }
+  .hero-copy { margin-left: auto; margin-right: auto; }
+  .hero-art { order: -1; }
+  .hero-art img { max-width: 360px; }
+  h1 { font-size: clamp(42px, 12vw, 62px); }
+  section { padding: 55px 0; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .about-grid { grid-template-columns: 1fr; gap: 25px; }
+  .story-art { max-width: 400px; margin: auto; }
+  .roadmap-grid { grid-template-columns: 1fr; }
+  .phase { padding: 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-brand { justify-content: center; }
+  .copyright { text-align: center; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <img src="logo.jpg" alt="INK BOTTLE logo">
+      <span>INK BOTTLE</span>
+    </a>
+    <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#collection">Collection</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="btn enter" href="#collection">Enter Laboratory →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container" id="home">
+    <div>
+      <div class="eyebrow">A collection on INK Chain</div>
+      <h1>INK BOTTLE</h1>
+      <div class="tagline">Five Bottles, A World of Mystery.</div>
+      <p class="hero-copy">Discover the collection and uncover the secrets behind each bottle.</p>
+      <a class="btn" href="#collection">Explore the Collection →</a>
+    </div>
+    <div class="hero-art">
+      <img src="logo.jpg" alt="The first INK BOTTLE, glowing beneath a violet moon">
+    </div>
+  </section>
+
+  <section class="collection" id="collection">
+    <div class="container">
+      <div class="section-heading">
+        <h2>THE COLLECTION</h2>
+        <p>One revealed. Four secrets remain.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <img src="logo.jpg" alt="INK BOTTLE number 001, revealed">
+          <div class="card-info">
+            <h3>INK BOTTLE #001</h3>
+            <p>THE FIRST BOTTLE</p>
+            <span class="status revealed">REVEALED</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="mystery.jpg" alt="Sealed INK BOTTLE number 002">
+          <div class="card-info">
+            <h3>INK BOTTLE #002</h3>
+            <p>IDENTITY UNKNOWN</p>
+            <span class="status">SEALED</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="mystery.jpg" alt="Sealed INK BOTTLE number 003">
+          <div class="card-info">
+            <h3>INK BOTTLE #003</h3>
+            <p>IDENTITY UNKNOWN</p>
+            <span class="status">SEALED</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="mystery.jpg" alt="Sealed INK BOTTLE number 004">
+          <div class="card-info">
+            <h3>INK BOTTLE #004</h3>
+            <p>IDENTITY UNKNOWN</p>
+            <span class="status">SEALED</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="mystery.jpg" alt="Sealed INK BOTTLE number 005">
+          <div class="card-info">
+            <h3>INK BOTTLE #005</h3>
+            <p>IDENTITY UNKNOWN</p>
+            <span class="status">SEALED</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="story-art">
+        <img src="mystery.jpg" alt="A mysterious bottle in the world of INK BOTTLE">
+      </div>
+      <div>
+        <div class="eyebrow">About the project</div>
+        <h2>THE STORY OF INK BOTTLE</h2>
+        <h3>Some Secrets Should Stay Sealed.</h3>
+        <p>Deep within a forgotten laboratory, five mysterious bottles sit among ancient books, strange instruments, and traces of forgotten magic.</p>
+        <p>No one knows exactly what lies within each bottle. Every vessel holds a different secret, waiting for the right moment to be discovered.</p>
+        <p>The first bottle has finally been revealed. But four others remain sealed, their identities hidden behind glass and violet mist.</p>
+        <p>Built on INK Chain, INK BOTTLE begins as a collection shaped by mystery, individuality, and the excitement of discovering what comes next.</p>
+        <p>This is only the beginning. Not every secret is ready to be told.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="roadmap" id="roadmap">
+    <div class="container">
+      <div class="section-heading">
+        <h2>THE ROADMAP</h2>
+        <p>From the first reveal to the future of INK BOTTLE.</p>
+      </div>
+      <div class="roadmap-grid">
+        <article class="phase">
+          <div class="quarter">Q3 2026</div>
+          <h3>Building the Foundation</h3>
+          <ul>
+            <li>Establish the project's identity and visual direction.</li>
+            <li>Create and finalize the NFT artwork.</li>
+            <li>Prepare the official website.</li>
+            <li>Prepare the collection for launch on INK Chain.</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <div class="quarter">Q4 2026</div>
+          <h3>Community &amp; NFT Launch</h3>
+          <ul>
+            <li>Introduce INK BOTTLE to the INK Chain community.</li>
+            <li>Share the story and vision behind the collection.</li>
+            <li>Target the NFT collection launch for November 2026.</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <div class="quarter">Q1 2027</div>
+          <h3>Ecosystem Development</h3>
+          <ul>
+            <li>Strengthen community engagement.</li>
+            <li>Share project updates and development progress.</li>
+            <li>Develop the technical foundation for NFT staking.</li>
+            <li>Define the initial framework for Bottle Points.</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <div class="quarter">Q2 2027</div>
+          <h3>Utility &amp; Long-Term Growth</h3>
+          <ul>
+            <li>Continue developing and testing the NFT staking system.</li>
+            <li>Work toward transparent Bottle Points tracking.</li>
+            <li>Evaluate potential token utility and redemption mechanisms.</li>
+            <li>Share further details as development milestones are reached.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="disclaimer">Roadmap items represent current plans and may change as development progresses.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="footer-brand" href="#home">
+      <img src="logo.jpg" alt="INK BOTTLE">
+      <span>
+        <strong>INK BOTTLE</strong>
+        <span>Five Bottles, A World of Mystery.</span>
+      </span>
+    </a>
+    <div class="footer-links">
+      <a href="#" aria-label="Official X account">X / Twitter</a>
+      <a href="#" aria-label="OpenSea collection">OpenSea</a>
+    </div>
+    <div class="copyright">© 2026 INK BOTTLE.<br>All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  });
+});
+</script>
+</body>
+  </html>
+  
