@@ -1,4 +1,169 @@
-<label class="task">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10091d">
+  <title>INK BOTTLE | Campaign</title>
+  <style>
+    :root {
+      --bg: #10091d;
+      --panel: #1b102b;
+      --purple: #bd91ff;
+      --text: #f7f1ff;
+      --muted: #b8a9ca;
+      --border: #49335f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: var(--purple); }
+
+    header {
+      padding: 22px 18px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .brand {
+      color: var(--purple);
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-decoration: none;
+    }
+
+    main {
+      width: min(680px, 100%);
+      margin: auto;
+      padding: 35px 18px 55px;
+    }
+
+    .intro { text-align: center; margin-bottom: 30px; }
+
+    .eyebrow {
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    h1 { font-size: clamp(30px, 7vw, 44px); line-height: 1.15; }
+    h2 { font-size: 20px; margin-top: 0; }
+    p { color: var(--muted); }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 20px;
+    }
+
+    .task {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .task:last-child { border-bottom: 0; }
+    .task input { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--purple); }
+    .task span { flex: 1; }
+
+    label.field-label {
+      display: block;
+      margin: 18px 0 7px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="url"] {
+      width: 100%;
+      padding: 14px;
+      color: var(--text);
+      background: #10091d;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus { border-color: var(--purple); }
+
+    .submit {
+      display: block;
+      width: 100%;
+      margin-top: 25px;
+      padding: 16px;
+      background: var(--purple);
+      color: #170b26;
+      border: 0;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .submit:disabled { opacity: .65; cursor: wait; }
+
+    #result {
+      margin-top: 16px;
+      text-align: center;
+      color: var(--purple);
+    }
+
+    .back { display: inline-block; margin-top: 22px; text-decoration: none; }
+    footer { text-align: center; padding: 25px 15px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">INK BOTTLE</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">THE LABORATORY</div>
+      <h1>INK BOTTLE CAMPAIGN</h1>
+      <p>Complete the tasks below and submit your entry.</p>
+    </section>
+
+    <form id="campaignForm">
+      <section class="panel">
+        <h2>Campaign Tasks</h2>
+
+        <label class="task">
+          <input type="checkbox" name="tasks" value="Follow">
+          <span>Follow us on X</span>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" name="tasks" value="Like">
+          <span>Like the campaign post</span>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" name="tasks" value="Retweet">
+          <span>Retweet the campaign post</span>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" name="tasks" value="Quote Tweet">
+          <span>Quote Tweet the campaign post</span>
+        </label>
+        <label class="task">
           <input type="checkbox" name="tasks" value="Comment">
           <span>Comment on the campaign post</span>
         </label>
